@@ -16,6 +16,9 @@
   height: 500px;
   perspective: 1200px;
   cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .card-inner {
@@ -24,6 +27,10 @@
   position: relative;
   transform-style: preserve-3d;
   transition: transform 0.8s ease;
+   /* ⭐ trung tâm tuyệt đối bên trong card */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .card-inner.open {
