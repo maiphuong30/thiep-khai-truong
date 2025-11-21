@@ -6,7 +6,8 @@ export default function App() {
   const [open, setOpen] = useState(false);
   const [displayText, setDisplayText] = useState("");
   const audioRef = useRef(null);
-
+  // Thêm tên người nhận
+  const recipient = "Gủi Phú bà Trâm Nguyễn"; // ⭐ bạn chỉnh tên ở đây
   const fullText =
     "Chúc tiệm Châm luôn đông khách, doanh thu tăng vọt, rực rỡ và xinh đẹp!";
 
@@ -52,7 +53,7 @@ export default function App() {
   return (
     <div className="page">
       {/* Audio effect */}
-      <audio ref={audioRef} src="/sound/open.mp3" preload="auto" />
+      <audio ref={audioRef} src="sound/open.mp3" preload="auto" />
 
 
       <div className="card" onClick={toggleCard}>
@@ -60,6 +61,7 @@ export default function App() {
           {/* Mặt trước */}
           <div className="card-front">
             <h1 className="title-glow">✨ Thiệp Khai Trương ✨</h1>
+            <h2 className="recipient">🎀 {recipient} 🎀</h2> {/* tên người nhận */}
             <p>Nhấn để mở thiệp</p>
             <div className="decor decor1">💅</div>
             <div className="decor decor2">✂️</div>
@@ -72,9 +74,9 @@ export default function App() {
             <div className="decor decor3">🌸</div>
             <div className="decor decor4">🌺</div>
             <p className="sender">
-              💖 Từ hội chị em xênh đẹp của m 💖
+              💖 Từ hội chị em xinh đẹp 💖
             </p>
-            <img className="group-img" src="/images/girls.jpg" alt="Hội chị em" />
+            <img className="group-img" src="images/girls.jpg" alt="Hội chị em" />
 
             <div className="hint">Nhấn thiệp để mở / đóng</div>
           </div>
