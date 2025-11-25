@@ -7,9 +7,9 @@ export default function App() {
   const [displayText, setDisplayText] = useState("");
   const audioRef = useRef(null);
   // Thêm tên người nhận
-  const recipient = "Gủi Phú bà Trâm Nguyễn"; // ⭐ bạn chỉnh tên ở đây
+  const recipient = "Gủi Phú bà Trâm Nguyễn";
   const fullText =
-    "Chúc tiệm Châm luôn đông khách, doanh thu tăng vọt, rực rỡ và xinh đẹp!";
+    "Chúc tiệm Châm luôn đông khách, kinh doanh suôn sẻ, rực rỡ và rộn ràng!";
 
   const toggleCard = () => {
     const willOpen = !open;
@@ -70,6 +70,8 @@ export default function App() {
           {/* Mặt sau */}
           <div className="card-back">
             <h2 className="gold">🎉 Chúc mừng khai trương 🎉</h2>
+            {/* Badge ngày khai trương */}
+            <div className="date-badge">28/11/2025</div>
             <p className="message">{displayText}</p>
             <div className="decor decor3">🌸</div>
             <div className="decor decor4">🌺</div>

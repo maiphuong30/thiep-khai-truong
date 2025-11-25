@@ -26,15 +26,18 @@
   height: 100%;
   position: relative;
   transform-style: preserve-3d;
-  transition: transform 0.8s ease;
+  transition: transform 0.9s cubic-bezier(0.22, 0.61, 0.36, 1);
    /* ⭐ trung tâm tuyệt đối bên trong card */
   display: flex;
   justify-content: center;
   align-items: center;
+  box-shadow: 0 0 12px rgba(255, 170, 200, 0.25);
+  border-radius: 20px;
 }
 
 .card-inner.open {
   transform: rotateY(180deg);
+  box-shadow: 0 0 20px rgba(255, 120, 180, 0.35);
 }
 
 /* Mặt trước & mặt sau */
@@ -57,6 +60,7 @@
   background: #fff6fb;
   font-family: "Great Vibes", cursive;
   text-align: center;
+  position: relative;
 }
 
 .title-glow {
@@ -64,6 +68,18 @@
   margin-bottom: 10px;
   text-shadow: 0 4px 10px rgba(255, 137, 185, 0.5);
   animation: glow 2s infinite alternate;
+  white-space: nowrap; /* ⭐ Không xuống dòng */
+}
+/* Khi màn nhỏ → giảm font để không bị tràn */
+@media (max-width: 380px) {
+  .title-glow {
+    font-size: 20px;
+  }
+}
+@media (max-width: 320px) {
+  .title-glow {
+    font-size: 18px;
+  }
 }
 @keyframes glow { from{ text-shadow:0 0 5px #ffd700;} to{ text-shadow:0 0 15px #ff9dfc;} }
 
@@ -85,7 +101,7 @@
 .gold {
   font-family: "Great Vibes", cursive;
   font-size: 28px;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
   background: linear-gradient(120deg, #d94d8d 30%, #ffb6c1 50%, #d94d8d 70%);
   background-size: 200% 100%;
   -webkit-background-clip: text;
@@ -185,4 +201,49 @@
 .card-inner.open .recipient {
   opacity: 1;
   transform: translateY(0);
+}
+.card-front::before {
+  content: "";
+  position: absolute;
+  width: 140px;
+  height: 140px;
+  background: rgba(255, 200, 230, 0.45);
+  filter: blur(60px);
+  top: -20px;
+  right: -20px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0; /* ⭐ phía sau nội dung */
+}
+.date-badge {
+  margin-bottom: 10px;
+  padding: 6px 12px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #ffe4ec, #ffd6e0);
+  color: #ff6f91;
+  font-size: 14px;
+  font-weight: bold;
+  box-shadow: 0 4px 12px rgba(255, 105, 180, 0.3);
+  text-align: center;
+  position: relative;  /* ⭐ bắt buộc */
+  overflow: hidden;    /* ⭐ để ánh sáng không tràn ra ngoài */
+}
+
+.date-badge::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.6); /* tăng độ sáng */
+  transform: skewX(-25deg);
+  z-index: 2; /* đảm bảo nổi trên badge */
+  animation: light-sweep 2.5s infinite;
+}
+
+@keyframes light-sweep {
+  0% { left: -100%; }
+  50% { left: 100%; }
+  100% { left: 100%; }
 }
